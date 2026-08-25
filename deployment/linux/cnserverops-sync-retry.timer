@@ -1,0 +1,11 @@
+[Unit]
+Description=CNServerOps periodic Central delivery retry
+
+[Timer]
+OnBootSec=90
+OnUnitActiveSec=60
+Persistent=true
+Unit=cnserverops-sync-retry.service
+
+[Install]
+WantedBy=timers.target

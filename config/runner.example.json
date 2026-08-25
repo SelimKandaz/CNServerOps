@@ -1,0 +1,11 @@
+{
+  "schema_version": 1,
+  "runner_id": "CNSSD-01",
+  "runtime_version": "3.0.1-pass3",
+  "central": {
+    "endpoint": "https://10.1.10.51:8088",
+    "ca_file": "/etc/cnserverops/central-cert.pem",
+    "token_environment": "CNSERVEROPS_CENTRAL_TOKEN"
+  },
+  "note": "Endpoint is deployment configuration, not hard-coded runner logic. Create the real RUNNER_ID once; never derive it from the attached server or hostname."
+}

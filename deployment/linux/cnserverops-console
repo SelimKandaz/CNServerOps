@@ -1,0 +1,14 @@
+#!/bin/sh
+set -eu
+
+export PYTHONPATH=/opt/cnserverops/current
+export PYTHONDONTWRITEBYTECODE=1
+export PYTHONUNBUFFERED=1
+
+if ! /usr/bin/python3 -c 'import cnserverops.operator_console' >/dev/null 2>&1; then
+    echo 'CNServerOps console is unavailable in the selected runtime.'
+    echo 'Falling back to the existing local console login; no workflow was started.'
+    exec /sbin/agetty --autologin cnstress --noclear tty1 linux
+fi
+
+exec /usr/bin/python3 -m cnserverops.operator_console --config /etc/cnserverops/production.json

@@ -1,0 +1,11 @@
+[Unit]
+Description=CNServerOps periodic same-run firmware resume retry
+
+[Timer]
+OnBootSec=120
+OnUnitActiveSec=60
+Persistent=true
+Unit=cnserverops-firmware-resume-retry.service
+
+[Install]
+WantedBy=timers.target

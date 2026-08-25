@@ -1,0 +1,6 @@
+{
+  "schema_version": 1,
+  "endpoint": "https://10.1.10.51:8088",
+  "ca_file": "/etc/cnserverops/central-ca.pem",
+  "access_file": "/etc/cnserverops/central-auth"
+}

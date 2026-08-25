@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "primary_root": "/CN_STRESS_RESULTS",
+  "runner_config": "/etc/cnserverops/runner.json",
+  "central_config": "/etc/cnserverops/central.json",
+  "queue_database": "/var/lib/cnserverops/production/sync.sqlite3",
+  "artifact_queue_database": "/var/lib/cnserverops/production/artifacts.sqlite3",
+  "cpu_seconds": 120,
+  "memory_seconds": 120,
+  "sel_cleanup_enabled": true,
+  "default_profile": "STANDARD",
+  "reports_enabled": true,
+  "artifact_sync_enabled": true,
+  "firmware_live_discovery_enabled": true,
+  "firmware_discovery_timeout_seconds": 15,
+  "bmc_auth_policy": {
+    "mode": "AUTO_NEW_SERVER",
+    "default_probe_enabled": true,
+    "default_username": "admin",
+    "default_password_env": "CN_ASUS_BMC_DEFAULT_PASSWORD",
+    "default_password_file": "/etc/cnserverops/secrets/asus-default-bmc-password",
+    "provisioned_username": "admin",
+    "provisioned_username_env": "CN_ASUS_BMC_USERNAME",
+    "provisioned_password_env": "CN_ASUS_BMC_PASSWORD",
+    "provisioned_password_file": "/etc/cnserverops/secrets/asus-bmc-password",
+    "first_login_password_env": "CN_ASUS_BMC_FIRST_LOGIN_PASSWORD",
+    "first_login_password_file": "/etc/cnserverops/secrets/asus-first-login-bmc-password",
+    "provision_on_password_change": true,
+    "provision_account_path": "/redfish/v1/AccountService/Accounts/4",
+    "verify_tls": true,
+    "password_change_required_statuses": [],
+    "collect_authenticated_get_only": true
+  },
+  "handoff_policy": {
+    "allow_optional_review_for_ready": true
+  }
+}

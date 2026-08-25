@@ -1,0 +1,17 @@
+[Unit]
+Description=CNServerOps durable Central delivery retry
+Documentation=file:/opt/cnserverops/current/README.md
+After=network-online.target
+Wants=network-online.target
+ConditionPathExists=/opt/cnserverops/current
+
+[Service]
+Type=oneshot
+User=root
+Group=root
+Environment=PYTHONDONTWRITEBYTECODE=1
+Environment=PYTHONUNBUFFERED=1
+WorkingDirectory=/opt/cnserverops/current
+ExecStart=/usr/bin/python3 -m cnserverops.cli retry-sync --config /etc/cnserverops/production.json
+UMask=0077
+TimeoutStartSec=180

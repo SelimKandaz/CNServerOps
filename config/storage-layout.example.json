@@ -1,0 +1,20 @@
+{
+  "schema_version": 1,
+  "efi": {
+    "mount": "/boot/efi",
+    "role": "BOOT_ONLY",
+    "filesystem": "FAT32"
+  },
+  "primary_results": {
+    "mount": "/CN_STRESS_RESULTS",
+    "role": "AUTHORITATIVE_RESULTS",
+    "filesystem": "ext4"
+  },
+  "windows_export": {
+    "mount": "/mnt/cn_export",
+    "label": "CN_EXPORT",
+    "role": "REGENERABLE_WINDOWS_EXPORT",
+    "filesystem_candidate": "exFAT",
+    "production_verified": false
+  }
+}

@@ -1,0 +1,16 @@
+[Unit]
+Description=CNServerOps one-time cloned SSD personalization
+ConditionPathExists=/etc/cnserverops/clone-template.json
+After=local-fs.target systemd-udev-settle.service
+Before=systemd-networkd.service ssh.service network-pre.target cnserverops-runner.service cnserverops-console.service cnserverops-firmware-resume.service
+Wants=network-pre.target systemd-udev-settle.service systemd-networkd.service
+
+[Service]
+Type=oneshot
+Environment=PYTHONPATH=/opt/cnserverops/current
+Environment=PYTHONDONTWRITEBYTECODE=1
+ExecStart=/usr/bin/python3 -m cnserverops.clone_firstboot personalize --root / --runtime-version-file /opt/cnserverops/current/release-manifest.json
+RemainAfterExit=yes
+
+[Install]
+WantedBy=multi-user.target

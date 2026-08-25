@@ -1,0 +1,17 @@
+[Unit]
+Description=CNServerOps durable ASUS firmware resume retry
+Documentation=file:/opt/cnserverops/current/README.md
+After=network-online.target cnserverops-console.service
+Wants=network-online.target
+ConditionPathExists=/opt/cnserverops/current
+
+[Service]
+Type=oneshot
+User=root
+Group=root
+Environment=PYTHONDONTWRITEBYTECODE=1
+Environment=PYTHONUNBUFFERED=1
+ExecStart=/usr/bin/python3 -m cnserverops.cli asus-firmware-resume --config /etc/cnserverops/production.json
+WorkingDirectory=/opt/cnserverops/current
+UMask=0077
+TimeoutStartSec=900

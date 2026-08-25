@@ -1,0 +1,30 @@
+[Unit]
+Description=CNServerOps Physical Operator Console
+Documentation=file:/opt/cnserverops/current/README.md
+After=local-fs.target systemd-user-sessions.service cnserverops-clone-firstboot.service cnserverops-firmware-resume.service
+Wants=network-online.target cnserverops-clone-firstboot.service
+Conflicts=getty@tty1.service cngpu-countdown-menu.service
+ConditionPathExists=/opt/cnserverops/current
+
+[Service]
+Type=simple
+User=root
+Group=root
+ExecStart=/usr/local/sbin/cnserverops-console
+Restart=always
+RestartSec=2
+StandardInput=tty-force
+StandardOutput=tty
+StandardError=tty
+TTYPath=/dev/tty1
+TTYReset=yes
+TTYVHangup=yes
+TTYVTDisallocate=no
+Environment=PYTHONDONTWRITEBYTECODE=1
+Environment=PYTHONUNBUFFERED=1
+UMask=0077
+KillMode=mixed
+TimeoutStopSec=15
+
+[Install]
+WantedBy=multi-user.target

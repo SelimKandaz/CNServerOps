@@ -1,0 +1,10 @@
+{
+  "schema_version": 1,
+  "version": "2.0.0",
+  "files": {
+    "runtime/replace-with-relative-path": "replace-with-file-sha256"
+  },
+  "self_test_required": true,
+  "dell_regression_requirement": "Physical Dell PASS remains a separate release-readiness gate.",
+  "config_policy": "Runner identity and machine-independent local configuration live outside immutable release directories."
+}

@@ -1,0 +1,27 @@
+{
+  "vendor": "ASUS",
+  "component": "BMC",
+  "version": "EXAMPLE_ONLY",
+  "package_filename": "vendor-package-placeholder.bin",
+  "sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+  "source": "EXAMPLE_ONLY_NOT_A_VALID_PACKAGE",
+  "source_url": "https://vendor.example.invalid/placeholder",
+  "compatible_models": [],
+  "compatible_families": [],
+  "compatible_boards": [
+    "REPLACE_WITH_VENDOR_APPLICABILITY_EVIDENCE"
+  ],
+  "compatible_platform_ids": [],
+  "compatible_bmc_generations": [],
+  "package_format": "ZIP/BIN/CAP_AS_DOCUMENTED_BY_ASUS",
+  "official_release_url": "https://servers.asus.com/support/firmware",
+  "vendor_sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+  "install_mechanism": "UNKNOWN",
+  "reboot_requirement": "UNKNOWN",
+  "validation_status": "UNVERIFIED",
+  "applicability_evidence": [],
+  "discovered_at_utc": "",
+  "downloaded_at_utc": "",
+  "size_bytes": 0,
+  "warning": "A cached file is not current/applicable merely because this metadata exists."
+}

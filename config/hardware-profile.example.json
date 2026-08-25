@@ -1,0 +1,10 @@
+{
+  "schema_version": 1,
+  "profile_id": "ASUS_PLATFORM_PROFILE_REQUIRES_LAB_APPROVAL",
+  "expected_fan_sensors": [],
+  "minimum_psu_count": null,
+  "require_nvme": false,
+  "require_gpu": false,
+  "maximum_temperature_c": {},
+  "source": "Do not add device counts or thresholds until the exact chassis/platform profile is validated."
+}

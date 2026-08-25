@@ -1,0 +1,7 @@
+#!/bin/sh
+set -eu
+
+/usr/bin/systemctl disable --now cnserverops-console.service || true
+/usr/bin/systemctl enable --now getty@tty1.service
+echo 'CNServerOps console disabled; tty1 login restored.'
+echo 'The /opt/cnserverops/current runtime pointer was not changed.'

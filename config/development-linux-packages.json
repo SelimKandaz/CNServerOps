@@ -1,0 +1,22 @@
+{
+  "schema_version": 1,
+  "status": "DECLARED_NOT_INSTALLED_ON_REFERENCE_OR_PHYSICAL_LAB_SSD",
+  "ubuntu_packages": [
+    {
+      "package": "smartmontools",
+      "provides": ["smartctl"],
+      "purpose": "read-only SATA/SAS/USB bridge health and capability discovery"
+    },
+    {
+      "package": "nvme-cli",
+      "provides": ["nvme"],
+      "purpose": "read-only NVMe inventory and smart-log collection"
+    }
+  ],
+  "installation_policy": "Add only through a reviewed CNServerOps runtime release on a writable development clone, run self-tests, then complete Dell/ASUS regression before production rollout.",
+  "prohibited": [
+    "Install on the read-only reference SSD",
+    "Install automatically during a production server run",
+    "Run destructive SMART tests or NVMe format/sanitize operations"
+  ]
+}
