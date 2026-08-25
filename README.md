@@ -43,10 +43,9 @@ Source changes must pass the full test suite and ASUS platform matrix before pac
 
 Current validated production release:
 
-- Runtime: `3.8.120-pass3-stress-recovery`
-- Runtime SHA256: `9c441922939e5918e969971753c366872b796b6ac11175e11429a72c6beca04c`
-- Rollback: `3.8.119-pass3-first-login-safe`
-- Central: `https://10.1.10.51:8088`
+- Runtime family: `3.8.x` (exact production release is selected from the verified immutable bundle)
+- Runtime and rollback hashes: recorded in the private release manifest, not in this public documentation
+- Central: configured per deployment; no operational endpoint is embedded in this public repository
 
 The installer bundle and runtime tarball are generated artifacts and intentionally excluded from Git. Historical reports, firmware caches, rootfs/images, generated bundles, and live machine state remain outside this repository.
 
