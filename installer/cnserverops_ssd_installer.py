@@ -30,7 +30,11 @@ from typing import Any, Iterable, Mapping, Sequence
 
 
 INSTALLER_VERSION = "1.0.0"
-DEFAULT_CENTRAL_ENDPOINT = "https://10.1.10.51:8088"
+# Public source contains no operational Central address. Production builds pass
+# --central-endpoint explicitly (or set CNSERVEROPS_CENTRAL_ENDPOINT).
+DEFAULT_CENTRAL_ENDPOINT = os.environ.get(
+    "CNSERVEROPS_CENTRAL_ENDPOINT", "https://central.example.invalid:8088"
+)
 DEFAULT_RUNTIME_PACKAGE = "payload/runtime.tar.gz"
 DEFAULT_ROOTFS_GLOBS = ("payload/rootfs.tar", "payload/rootfs.tar.gz", "payload/rootfs.tar.xz")
 _SHA256_RE = re.compile(r"^[0-9a-f]{64}$")
