@@ -80,8 +80,9 @@ def _first(mapping: Mapping[str, Any] | None, *keys: str) -> str:
 
 
 def _version_key(value: str) -> tuple[Any, ...]:
-    """Sort vendor versions without assuming a single ASUS numbering scheme."""
+    """Sort versions without treating a parenthetical codename as a release."""
     text = _clean(value).casefold()
+    text = re.sub(r"\([^)]*\)", "", text)
     tokens = re.findall(r"\d+|[a-z]+", text)
     result: list[Any] = []
     for token in tokens:

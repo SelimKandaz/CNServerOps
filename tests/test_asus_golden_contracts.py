@@ -11,10 +11,19 @@ import hashlib
 import unittest
 
 from cnserverops.asus_firmware import AsusPlatformFingerprint, discover_asus_transports
-from cnserverops.production import _exact_current_versions_verified, _firmware_requires_authenticated_bmc
+from cnserverops.production import (
+    _exact_current_versions_verified,
+    _firmware_requires_authenticated_bmc,
+    _firmware_versions_equal,
+)
 
 
 class AsusGoldenContractTests(unittest.TestCase):
+    def test_live_version_matches_catalog_codename_annotation(self):
+        self.assertTrue(_firmware_versions_equal("1302", "1302(Turin)"))
+        self.assertTrue(_firmware_versions_equal("2306", "2306(Genoa)"))
+        self.assertFalse(_firmware_versions_equal("0601", "1302(Turin)"))
+
     CONTRACTS = (
         {
             "name": "RS500-ASMB11",

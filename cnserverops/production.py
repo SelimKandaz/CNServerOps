@@ -8284,8 +8284,16 @@ def _smart_health_status(result: Mapping[str, Any]) -> str:
 
 
 def _firmware_versions_equal(left: str, right: str) -> bool:
+    """Compare versions while ignoring a trailing vendor codename annotation.
+
+    ASUS catalog versions can contain metadata such as ``1302(Turin)`` while
+    the live DMI value is simply ``1302``.  Only parenthetical annotations are
+    removed; the remaining numeric/text version must still match exactly.
+    """
+
     def key(value: str) -> tuple[Any, ...]:
-        tokens = re.findall(r"\d+|[A-Za-z]+", str(value or "").upper())
+        stripped = re.sub(r"\([^)]*\)", "", str(value or ""))
+        tokens = re.findall(r"\d+|[A-Za-z]+", stripped.upper())
         normalized = [int(token) if token.isdigit() else token for token in tokens]
         while normalized and normalized[-1] == 0:
             normalized.pop()

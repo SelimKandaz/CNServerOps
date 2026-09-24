@@ -1483,6 +1483,9 @@ class GenericAsusFirmwareTests(unittest.TestCase):
     def test_trailing_zero_firmware_versions_are_not_seen_as_newer(self):
         self.assertEqual(_version_key("1.32"), _version_key("1.32.00"))
 
+    def test_parenthetical_codename_is_catalog_metadata(self):
+        self.assertEqual(_version_key("1302"), _version_key("1302(Turin)"))
+
     def test_redfish_adapter_uses_advertised_target_and_tracks_task(self):
         class Response:
             status = 202
