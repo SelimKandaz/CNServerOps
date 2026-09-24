@@ -1,6 +1,8 @@
 # CNServerOps
 
-CNServerOps is a bootable, technician-facing ASUS server intake, firmware, diagnostics, evidence, and handoff system. It keeps physical identity and capability decisions local to the current server and uses Central as the authoritative event/artifact synchronization service.
+CNServerOps is a sanitized reference implementation of a bootable, technician-facing ASUS server intake, firmware, diagnostics, evidence, and handoff system. It keeps physical identity and capability decisions local to the current server and uses Central as the authoritative event/artifact synchronization service.
+
+> **Repository status:** this public repository is not a byte-for-byte mirror of any deployed production SSD. The public history preserves the portable architecture and safety contracts; later hardware-specific immutable releases remain separated until their changes are reviewed, generalized, and regression-tested for public release. See [RELEASE-PROVENANCE.md](RELEASE-PROVENANCE.md).
 
 ## Technician workflows
 
@@ -14,8 +16,8 @@ Vendor-first detection keeps unknown systems inventory-only and prevents a Dell 
 
 | Platform | Board | Management | Validated paths |
 | --- | --- | --- | --- |
-| RS500A-E12-RS12U | K14PA-U24 | ASMB11 | local KCS/YAFU BMC update; exact `.CAP` BIOS package routed to supported Redfish BIOS OOB; KCS recovery/handoff |
-| RS700-E12-RS12U | Z14PP-D32 | ASMB12 | authenticated Redfish multipart BIOS/BMC transport; task tracking, reboot/resume, and factory handoff contracts |
+| RS501A-E12-RS12U | Platform evidence retained outside the public repository | ASMB11 | local KCS/YAFU BMC update; exact `.CAP` BIOS package routed to the supported platform transport; KCS recovery/handoff |
+| RS720A-E13-RS12U | K15PP-D24 | ASMB12 | authenticated ASUS-native BIOS OOB transport with persistent session/connection semantics; task tracking, reboot/resume, and factory handoff contracts |
 
 Shared lifecycle logic lives in `cnserverops/firmware_lifecycle.py` and `cnserverops/production.py`. Generation, board, model, package-format, and transport differences stay in ASUS descriptors and adapters. The platform matrix is a mandatory release gate.
 
@@ -41,9 +43,10 @@ The installer requires explicit target selection and confirmation, refuses the r
 
 Source changes must pass the full test suite and ASUS platform matrix before packaging. `scripts/build_runtime_package.py` verifies the closed tarball, member hashes, manifest, and embedded version. `cnserverops/runtime_preflight.py` validates staged and installed releases, including systemd unit parity and secret-file permissions. Golden releases are rollback targets; candidate releases are not production until package parity and platform gates pass.
 
-Current validated production release:
+Public reference and private production lineage:
 
-- Runtime family: `3.8.x` (exact production release is selected from the verified immutable bundle)
+- Public source baseline: `3.8.120` lineage
+- Later private immutable hardware-validation releases include RS501 `3.8.168` and RS720 `3.8.195`; these are specialized lineages, not one universal drop-in release
 - Runtime and rollback hashes: recorded in the private release manifest, not in this public documentation
 - Central: configured per deployment; no operational endpoint is embedded in this public repository
 

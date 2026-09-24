@@ -38,6 +38,7 @@ firmware-proof*.json
 *credential*
 *password*
 *token*
+!cnserverops/secrets.py
 *.pem
 *.key
 *.p12
