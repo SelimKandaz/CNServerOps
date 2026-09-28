@@ -1,6 +1,6 @@
-# CNServerOps Central Collector — Windows deployment
+# CNServerOps Central Collector: Windows deployment
 
-This package deploys the initial authenticated TLS collector to `C:\CNServerOps\Central` without hard-coding the endpoint in runner code. The default endpoint is `https://10.1.10.51:8088` and is stored in `config\central.json`.
+This package deploys the initial authenticated TLS collector to `C:\CNServerOps\Central` without hard-coding the endpoint in runner code. The endpoint is stored in `config\central.json` (for example `https://<central-host>:8088`).
 
 Run PowerShell as the intended long-lived service account:
 
